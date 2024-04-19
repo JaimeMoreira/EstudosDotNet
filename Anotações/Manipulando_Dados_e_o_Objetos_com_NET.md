@@ -151,4 +151,70 @@ public Pessoa(string nome, string sobrenome)
     Sobrenome = sobrenome;
 }
 ```
-Módulo Finalizado!
+Curso finalizado!<br>
+___
+## Manipulando Valores com C#
+
+<p><B> Concatenação de string:</b></p>
+
+Podemos fazer a concatenação (que é a junção de duas strings) de algumas formas, como nesses 2 exemplos abaixo:
+
+```C#
+public void ListarAlunos()
+{
+    Console.WriteLine($"Alunos do curso de: {Nome}");
+
+    for (int count = 0; count < Alunos.Count; count++)
+    {
+        //Exemplo 1:
+        string texto = "N° "+ count +" - "+ Alunos[count].NomeCompleto;
+
+        //Exemplo 2:
+        string texto = $"N° {count} - {Alunos[count].NomeCompleto}";
+        Console.WriteLine(texto);
+    }
+}
+```
+<p>Ambos exemplos estão corretos, porém o <b>Exemplo 2</b> apresenta uma visualização melhor, mais fácil de ler.<br>
+No <b>Exemplo 2</b> foi usado o símbolo de $ antes de iniciar a string, esse símbolo representa uma interpolação, que é quando vamos criar uma única string e colocar váriáveis dentro dela, através do símbolo de {}, ou seja, tudo que está dentro das chaves não é lido de maneira literal, mas sim o seu conteúdo, o valor da variável, se não inciarmos com o $ toda a string é lida de maneira literal.</p>
+
+<p><b> Ajustando Numeração: </b></p>
+
+<p> No exemplo que estamos utilizando, ao executar o código, aparece da seguinte forma:
+
+```
+N° 0 - JAIME MOREIRA DOS SANTOS JUNIOR
+N° 1 - ANTÔNIO FERREIRA DOS SANTOS
+```
+Se analizarmos a lógica dessa lista, estaria incorreto, já que deveria ser aluno n°1, n°2,n°3 etc, e não aluno n°0, não existe aluno número zero. Logo, para resolver isso realizamos a seguinte alteração no código somente para melhorar essa saída do programa:
+
+```C#
+public void ListarAlunos()
+{
+    Console.WriteLine($"Alunos do curso de: {Nome}");
+
+    for (int count = 0; count < Alunos.Count; count++)
+    {
+        string texto = $"N° {count + 1} - {Alunos[count].NomeCompleto}";
+        Console.WriteLine(texto);
+    }
+}
+```
+Adicionamos o "+ 1" em {count + 1} para que na exibição, ao invês de iniciar em zero, se inicie em 1.
+
+<p><b> Formatando Valores Monetários:</b></p>
+
+<p> Para formatarmos valores como moeda utilizamos os seguintes elementos:
+
+```C#
+double valorMonetario = 1580.40M;
+
+Console.WriteLine($"{valorMonetario:C}");
+```
+
+<p> No exemplo acima, após o valor informado temos a letra M, isso se faz necessário sempre que temos uma variável do tipo double, a letra C que está dentro das chaves, após a varipavel, está informando para o sistema que se trata de valor monetário e o sistema ira utilizar a moeda local, ao qual o sistema da máquina está configurado. A saída para o código acima seria:
+
+```C#
+R$ 1.580,40
+```
+
