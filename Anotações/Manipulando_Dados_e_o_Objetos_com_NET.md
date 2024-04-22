@@ -1,6 +1,6 @@
  # Módulo: Manipulando Dados e Objetos com .NET :nerd_face:
 
-<strong>Curso: Propriedades, Métodos e Construtores com C# :construction:</strong>
+## <strong>Curso: Propriedades, Métodos e Construtores com C# :construction:</strong>
 
 <p><b>Propriedades</b> são membros que oferecem um mecanismo flexível para ler, gravar ou calcular o valor de um campo particular.
 </p>
@@ -69,7 +69,7 @@ public class Pessoa
 
 <p>O SET agora apresenta uma condição, em quê se o valor recebido nessa entrada do usuário foi vazio, o programa exibirá uma mensagem de erro e se encerrará. Caso não seja vazio, então irá armazenar esse valor no campo <b>_nome.</b></p>
 
-<p><b>Body Expressions</b></p>
+### <b>Body Expressions</b>
 
 Podemos simplificar algumas expressões para facilitar a sua leitura, chamamos de <b>body expression</b>, vamos fazer isso com o nosso GET no exemplo abaixo:</p>
 
@@ -81,7 +81,7 @@ Podemos simplificar algumas expressões para facilitar a sua leitura, chamamos d
 ```
 Esse método é amplamente utilizado quando se tem somente uma linha de argumento como foi o caso desse GET.<br>
 
-<p><b>Validando a Propriedade Idade</b></p>
+### <b>Validando a Propriedade Idade</b>
 
 Vamos utilizar a mesma validação que foi utilizada para a propriedade Nome:<br>
 
@@ -151,11 +151,11 @@ public Pessoa(string nome, string sobrenome)
     Sobrenome = sobrenome;
 }
 ```
-Curso finalizado!<br>
+Curso finalizado!
 ___
 ## Manipulando Valores com C#
 
-<p><B> Concatenação de string:</b></p>
+### <B>Concatenação de string:</b>
 
 Podemos fazer a concatenação (que é a junção de duas strings) de algumas formas, como nesses 2 exemplos abaixo:
 
@@ -178,7 +178,7 @@ public void ListarAlunos()
 <p>Ambos exemplos estão corretos, porém o <b>Exemplo 2</b> apresenta uma visualização melhor, mais fácil de ler.<br>
 No <b>Exemplo 2</b> foi usado o símbolo de $ antes de iniciar a string, esse símbolo representa uma interpolação, que é quando vamos criar uma única string e colocar váriáveis dentro dela, através do símbolo de {}, ou seja, tudo que está dentro das chaves não é lido de maneira literal, mas sim o seu conteúdo, o valor da variável, se não inciarmos com o $ toda a string é lida de maneira literal.</p>
 
-<p><b> Ajustando Numeração: </b></p>
+### <b> Ajustando Numeração: </b>
 
 <p> No exemplo que estamos utilizando, ao executar o código, aparece da seguinte forma:
 
@@ -202,7 +202,7 @@ public void ListarAlunos()
 ```
 Adicionamos o "+ 1" em {count + 1} para que na exibição, ao invês de iniciar em zero, se inicie em 1.
 
-<p><b> Formatando Valores Monetários:</b></p>
+### <b> Formatando Valores Monetários:</b>
 
 <p> Para formatarmos valores como moeda utilizamos os seguintes elementos:
 
@@ -217,4 +217,51 @@ Console.WriteLine($"{valorMonetario:C}");
 ```C#
 R$ 1.580,40
 ```
+### <b> Alterando a Localização do código</b>
+
+<P> Para alterar a geolocalização para exibir os valores monetários em outro formato, de outra região, importamos o namespace <font color="gree"><i>Using System.Globalization;</i></font> e aplicamos no código da seguinte forma:
+
+```C#
+using System.Globalization;
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-us");
+
+double valorMonetario = 1580.40M;
+
+Console.WriteLine($"{valorMonetario:C}")
+```
+
+Nesse caso, estamos exibindo o valor monetário em Dollar.
+
+### <b> Formatações personalizadas </b>
+
+```c#
+double porcentagem = .3421;
+
+Console.WriteLine(porcentagem.ToString("P"));
+
+// Será exibido: 34,21%
+
+int numero = 123456
+Console.WriteLine(numero.ToString("##-##-##"));
+
+// Será exibido: 12-34-56
+```
+
+### <b> Trabalhando com DataTime </b>
+
+```C#
+DataTime data = DataTime.now;
+
+Console.WriteLine(data);
+
+// Será exibido a data e hora atuais completo, exemplo: 22/04/2024 15:52:27
+
+Console.WriteLine(data.ToString("dd/MM/yyyy HH:mm"));
+
+// Será exibido a data e hora sem os segundos, exemplo: 22/04/2024 15:53
+
+```
+
+<P> Podemos manipular como a data e o tempo são exibidos através do método <i><b>ToString</b></i> conforme visto no exemplo acima. Nesse caso, existe uma sensibilidade entre maiúsculo e minúsculo, que alteram a forma que é exibido, por exemplo, se acaso para representar o mês eao invés de "MM" eu usasse "mm" estaria falando não do mês, e sim dos minutos, como é visto no horário. O H maíusculo em horas, faz o o horário aparecer no modo 24 horas, mas se fosse colocado o H minúsculo, seria informado no modo 12 horas.</p>
 
